@@ -111,7 +111,7 @@ class ILabPublishView {
     }
 
     public static function render_view($view, $data) {
-        $view=new ILabMediaToolView(ILAB_PUBLISH_VIEW_DIR.'/'.$view);
+        $view=new ILabPublishView(ILAB_PUBLISH_VIEW_DIR.'/'.$view);
         return $view->render($data);
     }
 }

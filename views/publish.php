@@ -1,7 +1,10 @@
 <?php
 $lastpublished=get_option('ilab-publish-last-published');
 
-date_default_timezone_set(get_option('timezone_string'));
+$tz = get_option('timezone_string');
+
+if (!empty($tz))
+    date_default_timezone_set(get_option('timezone_string'));
 
 if (!$lastpublished || empty($lastpublished))
     $lastpublished='Never';

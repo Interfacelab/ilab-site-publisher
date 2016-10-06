@@ -15,31 +15,28 @@ class ILabPublishingToolPlugin {
         add_action('admin_menu', [$this,'create_admin_menu']);
 
         add_action('plugins_loaded',function(){
-            if (current_user_can('publish_live')) {
-                if (get_option('ilab-publish-state')=='needs') {
-                    add_action('admin_notices',function()  {
-                        echo ILabPublishView::render_view('message.php',[
-                            'type'=>'notice updated is-dismissible',
-                            'message'=>'The site has been changed and needs to be published.  <a href="/wp/wp-admin/admin.php?page=site-publisher-top">Click here to publish.</a>'
-                        ]);
-                    });
-                }
+            if (get_option('ilab-publish-state')=='needs') {
+                add_action('admin_notices',function()  {
+                    echo ILabPublishView::render_view('message.php',[
+                        'type'=>'notice updated is-dismissible',
+                        'message'=>'The site has been changed and needs to be published.  <a href="/wp/wp-admin/admin.php?page=site-publisher-top">Click here to publish.</a>'
+                    ]);
+                });
             }
         });
-
-
 
         add_action( 'wp_ajax_ilab_publish_live', [$this,'publishLive']);
     }
 
     public function create_admin_menu()
     {
-        add_menu_page('Settings', 'Site Publisher', 'publish_live', 'site-publisher-top', [$this,'renderPublish'],'dashicons-welcome-view-site');
-        add_submenu_page( 'site-publisher-top', 'Site Publisher', 'Publish', 'publish_live', 'site-publisher-top', [$this,'renderPublish']);
-        add_submenu_page( 'site-publisher-top', 'Site Publisher Activity Log', 'Activity Log', 'publish_live', 'site-publisher-activity', [$this,'renderActivityLog']);
-        add_submenu_page( 'site-publisher-top', 'Site Publisher History', 'Publish History', 'publish_live', 'site-publisher-history', [$this,'renderPublishHistory']);
-        add_submenu_page( 'site-publisher-top', 'Site Publisher Settings', 'Settings', 'publish_live', 'site-publisher-settings', [$this,'renderSettings']);
-        add_action( 'admin_init', [$this,'register_plugin_settings'] );
+        add_menu_page('Settings', 'Site Publisher', 'manage_options', 'site-publisher-top', [$this,'renderPublish'],'dashicons-welcome-view-site');
+        add_submenu_page( 'site-publisher-top', 'Site Publisher', 'Publish', 'manage_options', 'site-publisher-top', [$this,'renderPublish']);
+        add_submenu_page( 'site-publisher-top', 'Site Publisher Activity Log', 'Activity Log', 'manage_options', 'site-publisher-activity', [$this,'renderActivityLog']);
+        add_submenu_page( 'site-publisher-top', 'Site Publisher History', 'Publish History', 'manage_options', 'site-publisher-history', [$this,'renderPublishHistory']);
+        add_submenu_page( 'site-publisher-top', 'Site Publisher Settings', 'Settings', 'manage_options', 'site-publisher-settings', [$this,'renderSettings']);
+
+	    $this->register_plugin_settings();
     }
 
     public function register_plugin_settings() {
@@ -366,9 +363,6 @@ class ILabPublishingToolPlugin {
     }
 
     public function publishLive() {
-
-        if (!current_user_can('publish_live'))
-            die;
 
         if ($_POST['theme']==1) {
 
