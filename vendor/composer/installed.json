@@ -1,0 +1,45 @@
+[
+    {
+        "name": "jamesryanbell/cloudflare",
+        "version": "1.8.0",
+        "version_normalized": "1.8.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/jamesryanbell/cloudflare.git",
+            "reference": "5ac056368147c501f086b5400f776dc158d3de24"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/jamesryanbell/cloudflare/zipball/5ac056368147c501f086b5400f776dc158d3de24",
+            "reference": "5ac056368147c501f086b5400f776dc158d3de24",
+            "shasum": ""
+        },
+        "require-dev": {
+            "phpunit/phpunit": "*",
+            "satooshi/php-coveralls": "dev-master"
+        },
+        "time": "2016-10-01 20:36:05",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Cloudflare\\": "src/CloudFlare"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "James Bell",
+                "email": "james@james-bell.co.uk"
+            }
+        ],
+        "description": "CloudFlare API - PHP",
+        "keywords": [
+            "api",
+            "cloudflare"
+        ]
+    }
+]
