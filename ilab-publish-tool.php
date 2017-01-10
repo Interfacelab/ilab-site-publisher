@@ -4,7 +4,7 @@ Plugin Name: ILab Site Publisher
 Plugin URI: https://github.com/jawngee/ILAB-Site-Publisher
 Description: Publishing Tool
 Author: Jon Gilkison
-Version: 0.1
+Version: 0.1.0
 Author URI: http://interfacelab.com
 */
 
