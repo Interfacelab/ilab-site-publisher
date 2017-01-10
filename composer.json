@@ -1,5 +1,16 @@
 {
-    "require": {
+    "name" : "ilab/ilab-site-publisher",
+    "description": "Plugin for managing http proxy caches like Varnish and CloudFlare",
+    "type": "wordpress-plugin",
+    "license": "LGPL",
+    "keywords": ["cloudflare","varnish","cache","wordpress"],
+    "authors": [
+        {
+            "name": "Jon Gilkison",
+            "email": "jon@interfacelab.com"
+        }
+    ],
+    "require" : {
         "jamesryanbell/cloudflare": "^1.6"
     }
 }
